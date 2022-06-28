@@ -8,7 +8,7 @@
         /// <param name="strSource">Source String</param>
         /// <param name="strStart">Where to Start looking</param>
         /// <param name="strEnd">Where to Stop looking</param>
-        /// <returns>The cream between</returns>
+        /// <returns>The cream between if unsucessful returns given string</returns>
         public static string GetBetween(string strSource, string strStart, string strEnd)
         {
             if (strSource.Contains(strStart) && strSource.Contains(strEnd))
@@ -19,7 +19,7 @@
                 return strSource.Substring(Start, End - Start);
             }
 
-            return "";
+            return strSource;
         }
     }
 }
