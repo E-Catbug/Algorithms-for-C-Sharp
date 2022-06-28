@@ -16,7 +16,7 @@
                 int Start, End;
                 Start = strSource.IndexOf(strStart, 0) + strStart.Length;
                 End = strSource.IndexOf(strEnd, Start);
-                return strSource.Substring(Start, End - Start);
+                return strSource.Substring(Start, End - Start).Trim();
             }
 
             return strSource;
