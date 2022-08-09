@@ -1,4 +1,6 @@
-﻿namespace Algorithms
+﻿using System.Linq;
+
+namespace Algorithms
 {
     public static class StringManipulation
     {
@@ -20,6 +22,16 @@
             }
 
             return strSource;
+        }
+
+        /// <summary>
+        /// Call this to remove duplicate words within a string
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>string with duplicate words removed</returns>
+        public static string RemoveDuplicates(string text)
+        {
+            return string.Join(" ", text.Split(' ').Distinct());
         }
     }
 }
