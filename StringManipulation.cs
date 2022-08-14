@@ -2,6 +2,9 @@
 
 namespace Algorithms
 {
+    /// <summary>
+    /// Class for additional methods of affecting strings
+    /// </summary>
     public static class StringManipulation
     {
         /// <summary>
