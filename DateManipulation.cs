@@ -24,11 +24,11 @@ namespace Algorithms
             const System.Globalization.DateTimeStyles style = System.Globalization.DateTimeStyles.AllowWhiteSpaces;
             if (dateFmt == null)
             {
-                var dateInfo = System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat;
+                System.Globalization.DateTimeFormatInfo dateInfo = System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat;
                 dateFmt = dateInfo.GetAllDateTimePatterns();
             }
-            var result = DateTime.TryParseExact(dateTimeStr, dateFmt, System.Globalization.CultureInfo.InvariantCulture,
-                           style, out var dt) ? dt : null as DateTime?;
+            DateTime? result = DateTime.TryParseExact(dateTimeStr, dateFmt, System.Globalization.CultureInfo.InvariantCulture,
+                           style, out DateTime dt) ? dt : null as DateTime?;
             return result;
         }
     }
