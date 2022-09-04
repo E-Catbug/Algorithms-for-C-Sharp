@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Algorithms
 {
@@ -35,6 +36,23 @@ namespace Algorithms
         public static string RemoveDuplicates(string text)
         {
             return string.Join(" ", text.Split(' ').Distinct());
+        }
+
+        public static string RemoveParenthesisColonComma(string append)
+        {
+            append = Regex.Replace(append, "[(]", "");
+            append = Regex.Replace(append, "[)]", "");
+            append = Regex.Replace(append, "[:]", "");
+            append = Regex.Replace(append, "[:]", "");
+            append = Regex.Replace(append, "[,]", "");
+            return append;
+        }
+
+        public static string RemoveSlashes(string append)
+        {
+            append = Regex.Replace(append, "[/]", "");
+            append = Regex.Replace(append, "['\']", "");
+            return append;
         }
     }
 }

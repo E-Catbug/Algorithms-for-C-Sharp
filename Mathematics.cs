@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Algorithms
 {
-    internal class Mathematics
+    public class Mathematics
     {
         private List<Point> SortByDistance(List<Point> lst)
         {
