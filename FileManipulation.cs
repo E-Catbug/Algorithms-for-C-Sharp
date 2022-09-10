@@ -5,14 +5,6 @@ namespace Algorithms
 {
     public static class FileManipulation
     {
-        public static void FileDeleteIfExists(string fileLocation)
-        {
-            if (System.IO.File.Exists(fileLocation))
-            {
-                System.IO.File.Delete(fileLocation);
-            }
-        }
-
         /// <summary>
         /// Delets the directory if it exists
         /// </summary>
