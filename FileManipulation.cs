@@ -28,5 +28,17 @@ namespace Algorithms
                 File.Delete(path);
             }
         }
+
+        /// <summary>
+        /// Creates the directory if the directory does not already exist
+        /// </summary>
+        /// <param name="path"></param>
+        public static void CreateDirectory(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+        }
     }
 }
