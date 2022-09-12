@@ -6,6 +6,18 @@ namespace Algorithms
     public static class FileManipulation
     {
         /// <summary>
+        /// Creates the directory if the directory does not already exist
+        /// </summary>
+        /// <param name="path"></param>
+        public static void CreateDirectory(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+        }
+
+        /// <summary>
         /// Delets the directory if it exists
         /// </summary>
         /// <param name="path"></param>
@@ -30,15 +42,16 @@ namespace Algorithms
         }
 
         /// <summary>
-        /// Creates the directory if the directory does not already exist
+        /// Call this method to get a file form the itnernet
         /// </summary>
-        /// <param name="path"></param>
-        public static void CreateDirectory(string path)
+        /// <param name="hyperlink">Link to the file</param>
+        /// <param name="filePath">File created from the link</param>
+        public static void GetFileFromInternet(string hyperlink, string filePath)
         {
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
+            System.Net.WebClient webClient = new System.Net.WebClient();
+            Stream stream = webClient.OpenRead(hyperlink);
+            StreamReader reader = new StreamReader(stream);
+            File.WriteAllText(filePath, reader.ReadToEnd());
         }
     }
 }
