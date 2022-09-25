@@ -21,11 +21,18 @@ namespace Algorithms
         /// Delets the directory if it exists
         /// </summary>
         /// <param name="path"></param>
-        public static void DeleteDirectory(string path)
+        public static void DeleteDirectory(string path, bool deleteContents)
         {
             if (Directory.Exists(path))
             {
-                Directory.Delete(path);
+                if (deleteContents)
+                {
+                    Directory.Delete(path, deleteContents);
+                }
+                else
+                {
+                    Directory.Delete(path);
+                }
             }
         }
 
