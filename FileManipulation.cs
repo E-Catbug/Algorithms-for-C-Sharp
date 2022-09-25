@@ -1,9 +1,10 @@
 ﻿//Created by Alexander Fields https://github.com/roku674
+using System;
 using System.IO;
 
 namespace Algorithms
 {
-    public static class FileManipulation
+    public static class FileManagement
     {
         /// <summary>
         /// Creates the directory if the directory does not already exist
@@ -18,9 +19,28 @@ namespace Algorithms
         }
 
         /// <summary>
-        /// Delets the directory if it exists
+        /// Inserts a replacement line into a file
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="fileAsArray">The file as a string array</param>
+        /// <param name="newText">new line you want to insert</param>
+        /// <param name="line_to_edit">which line you want to edit by number</param>
+        /// <returns>the edited file as a string array </returns>
+        public static string[] LineChanger(string[] fileAsArray, string newText, long line_to_edit)
+        {
+            if (fileAsArray.LongLength <= line_to_edit) //resize array if length is less than thje line you want to edit
+            {
+                Array.Resize(ref fileAsArray, (int)line_to_edit + 1);
+            }
+
+            fileAsArray[line_to_edit] = newText; //edit the line
+            return fileAsArray; //return string
+        }
+
+        /// <summary>
+        /// Deletes a directory
+        /// </summary>
+        /// <param name="path">path of directory</param>
+        /// <param name="deleteContents">if true will delete the files and directories in directory</param>
         public static void DeleteDirectory(string path, bool deleteContents)
         {
             if (Directory.Exists(path))
@@ -37,6 +57,35 @@ namespace Algorithms
         }
 
         /// <summary>
+        /// Deletes the directory if it exists
+        /// </summary>
+        /// <param name="path">path of directory</param>
+        /// <param name="deleteContents">if true will delete the files and directories in directory</param>
+        /// <returns>An exception if any or returns null if no exception found</returns>
+        public static Exception DeleteDirectoryTry(string path, bool deleteContents)
+        {
+            try
+            {
+                if (Directory.Exists(path))
+                {
+                    if (deleteContents)
+                    {
+                        Directory.Delete(path, deleteContents);
+                    }
+                    else
+                    {
+                        Directory.Delete(path);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e;
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Deletes the file if it exists
         /// </summary>
         /// <param name="path"></param>
@@ -46,6 +95,22 @@ namespace Algorithms
             {
                 File.Delete(path);
             }
+        }
+
+        public static Exception DeleteFileTry(string path)
+        {
+            try
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+            catch (Exception e)
+            {
+                return e;
+            }
+            return null;
         }
 
         /// <summary>
@@ -59,7 +124,7 @@ namespace Algorithms
             Stream stream = webClient.OpenRead(hyperlink);
             StreamReader reader = new StreamReader(stream);
             File.WriteAllText(filePath, reader.ReadToEnd());
-            
+
             reader.Close();
             stream.Close();
             webClient.Dispose();
