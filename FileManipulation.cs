@@ -59,6 +59,9 @@ namespace Algorithms
             Stream stream = webClient.OpenRead(hyperlink);
             StreamReader reader = new StreamReader(stream);
             File.WriteAllText(filePath, reader.ReadToEnd());
+            
+            reader.Close();
+            stream.Close();
             webClient.Dispose();
         }
     }
