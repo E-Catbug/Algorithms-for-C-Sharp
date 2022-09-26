@@ -17,6 +17,19 @@ namespace Algorithms
                 Directory.CreateDirectory(path);
             }
         }
+        
+        /// <summary>
+        /// Create the file if the file doesn't already exist and closes it
+        /// </summary>
+        /// <param name="path"></param>
+        public static void CreateFile(string path)
+        {
+            if (!File.Exists(path))
+            {
+                FileStream file = File.Create(path);
+                file.Close();
+            }
+        }
 
         /// <summary>
         /// Inserts a replacement line into a file
