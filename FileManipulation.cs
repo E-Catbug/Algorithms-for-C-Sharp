@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Algorithms
 {
-    public static class FileManagement
+    public static class FileManipulation
     {
         /// <summary>
         /// Creates the directory if the directory does not already exist
